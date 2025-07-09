@@ -1,0 +1,251 @@
+@use "../variables" as *;
+@use "../media" as *;
+
+@mixin active($back, $col) {
+  background-color: $back;
+  color: $col;
+  transition: all 0.5s ease;
+
+  @include hover {
+    &:hover {
+      background-color: $back;
+    }
+  }
+}
+
+@mixin selected-after($col, $back) {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 1px solid $col;
+  background-color: $back;
+  border-radius: 16px;
+  z-index: -1;
+}
+
+@mixin selected-before($col) {
+  content: "";
+  position: absolute;
+  width: 36px;
+  height: 36px;
+  border-radius: 18px;
+  background-color: $col;
+  z-index: -2;
+}
+
+%flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox {
+  width: 50px;
+  height: 25px;
+  background-color: $overlay;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+  margin-bottom: 20px;
+
+  &__input {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    appearance: none;
+    cursor: pointer;
+    background-color: $white;
+    transition: all 0.5s ease;
+
+    &:checked {
+      background-color: $blue;
+      transform: translateX(25px);
+    }
+  }
+}
+
+.calendar {
+  position: relative;
+  max-width: 560px;
+  overflow: hidden;
+  border-radius: 6px;
+  background: url("../img/calendar.png") no-repeat bottom/cover;
+
+  @supports (background-image: url("../img/calendar.avif")) {
+    & {
+      background-image: url("../img/calendar.avif");
+    }
+  }
+
+  @supports (background-image: url("../img/calendar.webp")) and (not (background-image: url("../img/calendar.avif"))) {
+    & {
+      background-image: url("../img/calendar.webp");
+    }
+  }
+
+  @include laptop {
+    max-width: 320px;
+  }
+
+  @include mobile {
+    min-width: 240px;
+  }
+
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: $overlay;
+  }
+
+  &__header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 5;
+    text-transform: uppercase;
+    height: 40px;
+    margin: 8px 0 12px;
+    padding: 4px 8px;
+
+    &_prev,
+    &_next,
+    &_prev-dark,
+    &_next-dark {
+      @extend %flex;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background-color: transparent;
+      transition: background-color 0.5s ease;
+    }
+
+    &_prev,
+    &_next {
+      @include hover {
+        &:hover {
+          background-color: $dark-gray;
+        }
+      }
+
+      &:active {
+        background-color: $dark-gray;
+      }
+    }
+
+    &_prev-dark,
+    &_next-dark {
+      @include hover {
+        &:hover {
+          background-color: $gray-arrow;
+        }
+      }
+
+      &:active {
+        background-color: $gray-arrow;
+      }
+    }
+  }
+
+  &__days {
+    position: relative;
+    z-index: 5;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin-bottom: 12px;
+    row-gap: 8px;
+  }
+
+  &__day,
+  &__day-dark {
+    position: relative;
+    width: 100%;
+    height: 36px;
+    @extend %flex;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.5s ease;
+  }
+
+  @include hover {
+    &__day:hover {
+      background-color: $dark-gray;
+    }
+  }
+
+  @include hover {
+    &__day-dark:hover {
+      background-color: $gray-arrow;
+    }
+  }
+
+  &__day_next {
+    color: $gray-text;
+  }
+}
+
+.selected {
+  position: relative;
+  color: $black;
+
+  &-dark {
+    color: $white;
+  }
+
+  &::after {
+    @include selected-after($light-outline, $gray);
+  }
+
+  &-dark::after {
+    @include selected-after($dark-outline, $dark-blue);
+  }
+
+  &::before {
+    @include selected-before($white);
+  }
+
+  &-dark::before {
+    @include selected-before($blue);
+  }
+
+  &__start::before,
+  &__end::before,
+  &__start-dark::before,
+  &__end-dark::before {
+    width: 100%;
+  }
+
+  &__start::before,
+  &__start-dark::before {
+    left: calc((100% - 36px) / 2);
+    border-radius: 18px 0 0 18px;
+  }
+
+  &__end::before,
+  &__end-dark::before {
+    right: calc((100% - 36px) / 2);
+    border-radius: 0 18px 18px 0;
+  }
+
+  @include hover {
+
+    &:hover,
+    &-dark:hover {
+      background-color: transparent;
+    }
+  }
+}
+
+.active {
+  @include active($white, $black);
+
+  &-dark {
+    @include active($blue, $white);
+  }
+}

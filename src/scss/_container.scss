@@ -1,0 +1,11 @@
+@use "media" as *;
+
+.container {
+	width: calc(100% - 80px);
+	margin: 40px auto;
+
+	@include mobile {
+		width: calc(100% - 40px);
+		margin: 20px auto;
+	}
+}

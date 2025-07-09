@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Тестовое задание «Альпака календарь» на январь. Интерактивный календарь для выбора дат.">
+  <meta name="keywords" content="календарь, январь, планирование, события, даты, Альпака, онлайн-календарь">
+  <title>Тестовое задание - Альпака календарь</title>
+  <link rel="icon" href="img/icon.svg" type="image/svg+xml">
+  <link rel="preload" href="fonts/roboto-v30-cyrillic_latin-500.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="stylesheet" href="scss/index.scss">
+  <script src="script.js" type="module"></script>
+</head>
+
+<body>
+  <main class="main">
+    <section class="date">
+      <div class="container">
+        <h1 class="visually-hidden">Календарь на январь</h1>
+
+        <article class="checkbox">
+          <input class="checkbox__input" aria-label="Переключатель темы" type="checkbox">
+        </article>
+
+        <article class="calendar">
+          <header class="calendar__header">
+            <button class="calendar__header_prev" aria-label="Предыдущий месяц">
+              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M8 1.4L6.48649 0L0 6L6.48649 12L8 10.6L3.02703 6L8 1.4Z"
+                  fill="white" />
+              </svg>
+            </button>
+            <h2 class="calendar__month" id="month">Январь</h2>
+            <button class="calendar__header_next" aria-label="Следующий месяц">
+              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M4.76837e-07 1.4L1.51351 0L8 6L1.51351 12L4.76837e-07 10.6L4.97297 6L4.76837e-07 1.4Z" fill="white" />
+              </svg>
+            </button>
+          </header>
+    
+          <div class="calendar__days">
+            <div class="calendar__day">1</div>
+            <div class="calendar__day">2</div>
+            <div class="calendar__day">3</div>
+            <div class="calendar__day">4</div>
+            <div class="calendar__day">5</div>
+            <div class="calendar__day">6</div>
+            <div class="calendar__day">7</div>
+            <div class="calendar__day">8</div>
+            <div class="calendar__day">9</div>
+            <div class="calendar__day">10</div>
+            <div class="calendar__day">11</div>
+            <div class="calendar__day">12</div>
+            <div class="calendar__day">13</div>
+            <div class="calendar__day">14</div>
+            <div class="calendar__day">15</div>
+            <div class="calendar__day">16</div>
+            <div class="calendar__day">17</div>
+            <div class="calendar__day">18</div>
+            <div class="calendar__day">19</div>
+            <div class="calendar__day">20</div>
+            <div class="calendar__day">21</div>
+            <div class="calendar__day">22</div>
+            <div class="calendar__day">23</div>
+            <div class="calendar__day">24</div>
+            <div class="calendar__day">25</div>
+            <div class="calendar__day">26</div>
+            <div class="calendar__day">27</div>
+            <div class="calendar__day">28</div>
+            <div class="calendar__day">29</div>
+            <div class="calendar__day">30</div>
+            <div class="calendar__day calendar__day_next">1</div>
+            <div class="calendar__day calendar__day_next">2</div>
+            <div class="calendar__day calendar__day_next">3</div>
+            <div class="calendar__day calendar__day_next">4</div>
+            <div class="calendar__day calendar__day_next">5</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

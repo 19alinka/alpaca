@@ -1,0 +1,43 @@
+@use "fonts" as *;
+@use "variables" as *;
+
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+*, *::before, *::after {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+	position: relative;
+	width: 100%;
+	text-size-adjust: none;
+	font-size: $font-size;
+	font-family: $font-family;
+	line-height: $line-height;
+	font-weight: $font-weight;
+  color: $white;
+	overflow-x: hidden;
+}
+
+input, button, textarea {font-family:inherit;}
+
+input::-ms-clear {display: none;}
+button {cursor: pointer;font-size:inherit;font-weight: inherit;color: inherit;}
+button::-moz-focus-inner {padding:0;border:0;}
+a:visited, a {text-decoration: none;}
+a:hover {text-decoration: none;}
+a {color: inherit;} 
+ul li {list-style: none;}
+img {vertical-align: top;}
+
+h1, h2, h3, h4, h5, h6 {font-size:inherit;font-weight: inherit;}
+
+.visually-hidden {
+  position: fixed;
+  transform: scale(0);
+}
